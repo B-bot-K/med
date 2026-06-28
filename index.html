@@ -2,412 +2,417 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>MedAI Pro — Advanced Medical & Nursing Assistant</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --navy:    #0B1F3A;
-    --teal:    #0D7D7E;
-    --teal-lt: #14A8AA;
-    --cream:   #F7F4EF;
-    --white:   #FFFFFF;
-    --muted:   #8A97A8;
-    --border:  #D6DDE6;
-    --danger:  #C0392B;
-    --warn:    #E67E22;
-    --success: #27AE60;
-    --user-bg: #EBF5F5;
-    --ai-bg:   #FFFFFF;
-    --shadow:  0 2px 12px rgba(11,31,58,0.10);
-  }
+:root {
+  --navy:    #0B1F3A;
+  --navy2:   #112848;
+  --teal:    #0D7D7E;
+  --teal-lt: #14A8AA;
+  --teal-xlt:#E0F5F5;
+  --cream:   #F4F1EC;
+  --white:   #FFFFFF;
+  --muted:   #8A97A8;
+  --border:  #D6DDE6;
+  --danger:  #C0392B;
+  --warn:    #E67E22;
+  --success: #27AE60;
+  --purple:  #7B5EA7;
+  --shadow:  0 2px 12px rgba(11,31,58,0.10);
+  --shadow-lg: 0 8px 32px rgba(11,31,58,0.15);
+}
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--cream);
-    color: var(--navy);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--navy);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-  /* ── HEADER ── */
-  header {
-    background: var(--navy);
-    padding: 0 28px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.18);
-  }
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .logo-icon {
-    width: 34px; height: 34px;
-    background: linear-gradient(135deg, var(--teal), var(--teal-lt));
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-  }
-  .logo-text {
-    font-family: 'DM Serif Display', serif;
-    font-size: 20px;
-    color: var(--white);
-    letter-spacing: 0.3px;
-  }
-  .logo-text span { color: var(--teal-lt); }
-  .header-badge {
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--teal-lt);
-    border: 1px solid var(--teal);
-    border-radius: 20px;
-    padding: 3px 10px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
+/* ── HEADER ── */
+header {
+  background: var(--navy);
+  padding: 0 24px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.22);
+}
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-icon {
+  width: 34px; height: 34px;
+  background: linear-gradient(135deg, var(--teal), var(--teal-lt));
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+.logo-text { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--white); }
+.logo-text span { color: var(--teal-lt); }
+.header-right { display: flex; align-items: center; gap: 10px; }
+.header-badge {
+  font-size: 10px; font-weight: 600; color: var(--teal-lt);
+  border: 1px solid var(--teal); border-radius: 20px;
+  padding: 3px 10px; letter-spacing: 0.5px; text-transform: uppercase;
+}
+.mob-menu-btn {
+  display: none; background: none; border: none;
+  color: var(--white); font-size: 22px; cursor: pointer; padding: 4px 6px;
+}
 
-  /* ── LAYOUT ── */
-  .app {
-    display: flex;
-    flex: 1;
-    height: calc(100vh - 60px);
-  }
+/* ── TABS NAV ── */
+.tabs-nav {
+  background: var(--navy2);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 2px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs-nav::-webkit-scrollbar { display: none; }
+.tab-btn {
+  background: none; border: none;
+  color: #8A9BB0;
+  font-size: 12.5px; font-weight: 500;
+  padding: 12px 16px;
+  cursor: pointer;
+  display: flex; align-items: center; gap: 7px;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+.tab-btn:hover { color: var(--white); }
+.tab-btn.active { color: var(--teal-lt); border-bottom-color: var(--teal-lt); }
+.tab-icon { font-size: 15px; }
 
-  /* ── SIDEBAR ── */
-  .sidebar {
-    width: 260px;
-    background: var(--navy);
-    display: flex;
-    flex-direction: column;
-    padding: 20px 16px;
-    gap: 8px;
-    overflow-y: auto;
-    flex-shrink: 0;
-  }
-  .sidebar-label {
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--muted);
-    padding: 4px 8px;
-    margin-top: 8px;
-  }
-  .quick-btn {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 8px;
-    padding: 10px 12px;
-    color: #C5D0DE;
-    font-size: 12.5px;
-    cursor: pointer;
-    text-align: left;
-    transition: all 0.15s;
-    line-height: 1.4;
-  }
-  .quick-btn:hover {
-    background: rgba(13,125,126,0.25);
-    border-color: var(--teal);
-    color: var(--white);
-  }
-  .quick-btn .qb-icon { margin-right: 7px; font-size: 14px; }
+/* ── LAYOUT ── */
+.app {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 58px - 42px);
+  overflow: hidden;
+}
 
-  .disclaimer {
-    margin-top: auto;
-    background: rgba(192,57,43,0.15);
-    border: 1px solid rgba(192,57,43,0.3);
-    border-radius: 8px;
-    padding: 10px 12px;
-    font-size: 11px;
-    color: #E8A89F;
-    line-height: 1.5;
-  }
-  .disclaimer strong { color: #F1948A; display: block; margin-bottom: 2px; }
+/* ── SIDEBAR ── */
+.sidebar {
+  width: 250px;
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  flex-shrink: 0;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.sidebar-section { padding: 16px 14px 8px; }
+.sidebar-label {
+  font-size: 9.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.2px;
+  color: var(--muted); margin-bottom: 8px; padding: 0 4px;
+}
+.quick-btn {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px;
+  padding: 9px 12px;
+  color: #C5D0DE;
+  font-size: 12px; font-family: 'Inter', sans-serif;
+  cursor: pointer; text-align: left;
+  transition: all 0.15s; line-height: 1.4;
+  width: 100%; margin-bottom: 5px;
+  display: flex; align-items: center; gap: 8px;
+}
+.quick-btn:hover { background: rgba(13,125,126,0.22); border-color: var(--teal); color: var(--white); }
+.quick-btn .qb-icon { font-size: 14px; flex-shrink: 0; }
 
-  /* ── MAIN CHAT ── */
-  .main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
+.disclaimer {
+  margin: auto 14px 14px;
+  background: rgba(192,57,43,0.12);
+  border: 1px solid rgba(192,57,43,0.25);
+  border-radius: 8px; padding: 10px 12px;
+  font-size: 10.5px; color: #E8A89F; line-height: 1.5;
+}
+.disclaimer strong { color: #F1948A; display: block; margin-bottom: 2px; }
 
-  .chat-area {
-    flex: 1;
-    overflow-y: auto;
-    padding: 28px 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
+/* ── TAB PANELS ── */
+.tab-panel { display: none; flex: 1; flex-direction: column; overflow: hidden; }
+.tab-panel.active { display: flex; }
 
-  /* Welcome */
-  .welcome {
-    text-align: center;
-    padding: 40px 20px;
-    max-width: 600px;
-    margin: auto;
-  }
-  .welcome-cross {
-    font-size: 52px;
-    margin-bottom: 16px;
-  }
-  .welcome h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 30px;
-    color: var(--navy);
-    margin-bottom: 10px;
-  }
-  .welcome p {
-    color: #5A6A7E;
-    font-size: 15px;
-    line-height: 1.6;
-    margin-bottom: 24px;
-  }
-  .capability-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    text-align: left;
-  }
-  .cap-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px 14px;
-    font-size: 12.5px;
-    color: var(--navy);
-  }
-  .cap-card .cap-icon { font-size: 18px; margin-bottom: 4px; display: block; }
-  .cap-card strong { display: block; font-size: 13px; margin-bottom: 2px; }
-  .cap-card span { color: var(--muted); font-size: 11.5px; }
+/* ── CHAT PANEL ── */
+.chat-area {
+  flex: 1; overflow-y: auto;
+  padding: 24px 28px; display: flex;
+  flex-direction: column; gap: 18px;
+}
+.welcome {
+  text-align: center; padding: 32px 20px;
+  max-width: 580px; margin: auto;
+}
+.welcome-cross { font-size: 48px; margin-bottom: 14px; }
+.welcome h1 { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--navy); margin-bottom: 8px; }
+.welcome p { color: #5A6A7E; font-size: 14.5px; line-height: 1.6; margin-bottom: 22px; }
+.capability-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; text-align: left; }
+.cap-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 14px; font-size: 12px; color: var(--navy);
+  transition: box-shadow 0.15s, transform 0.15s; cursor: default;
+}
+.cap-card:hover { box-shadow: var(--shadow); transform: translateY(-1px); }
+.cap-card .cap-icon { font-size: 18px; margin-bottom: 4px; display: block; }
+.cap-card strong { display: block; font-size: 12.5px; margin-bottom: 2px; }
+.cap-card span { color: var(--muted); font-size: 11px; }
 
-  /* Messages */
-  .msg { display: flex; gap: 12px; max-width: 820px; width: 100%; }
-  .msg.user { align-self: flex-end; flex-direction: row-reverse; }
-  .msg.ai { align-self: flex-start; }
+.msg { display: flex; gap: 12px; max-width: 800px; width: 100%; }
+.msg.user { align-self: flex-end; flex-direction: row-reverse; }
+.msg.ai { align-self: flex-start; }
+.avatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; flex-shrink: 0;
+}
+.avatar.ai-av { background: linear-gradient(135deg, var(--teal), var(--teal-lt)); }
+.avatar.user-av { background: var(--navy); color: var(--white); font-size: 13px; font-weight: 700; }
+.bubble {
+  border-radius: 14px; padding: 13px 17px;
+  font-size: 14px; line-height: 1.75;
+  max-width: 660px; box-shadow: var(--shadow);
+}
+.msg.user .bubble { background: var(--navy); color: var(--white); border-bottom-right-radius: 4px; }
+.msg.ai .bubble { background: var(--white); color: var(--navy); border-bottom-left-radius: 4px; border: 1px solid var(--border); }
+.bubble h2 { font-family: 'DM Serif Display', serif; font-size: 16px; margin: 14px 0 6px; color: var(--teal); border-bottom: 1px solid var(--border); padding-bottom: 4px; }
+.bubble h3 { font-size: 13.5px; font-weight: 600; margin: 10px 0 4px; color: var(--navy); }
+.bubble ul, .bubble ol { padding-left: 20px; margin: 6px 0; }
+.bubble li { margin: 3px 0; }
+.bubble strong { font-weight: 600; }
+.bubble em { color: var(--teal); font-style: normal; font-weight: 500; }
+.bubble code { background: #EEF2F6; border-radius: 4px; padding: 1px 5px; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+.bubble table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 12.5px; }
+.bubble th { background: var(--navy); color: var(--white); padding: 7px 10px; text-align: left; font-weight: 500; }
+.bubble td { padding: 6px 10px; border-bottom: 1px solid var(--border); }
+.bubble tr:nth-child(even) td { background: #F4F7FA; }
+.bubble .warn-box { background: #FEF9EC; border-left: 3px solid var(--warn); border-radius: 4px; padding: 8px 12px; margin: 8px 0; font-size: 13px; color: #7D5A00; }
+.bubble .danger-box { background: #FEF0EE; border-left: 3px solid var(--danger); border-radius: 4px; padding: 8px 12px; margin: 8px 0; font-size: 13px; color: var(--danger); }
+.bubble .info-box { background: var(--teal-xlt); border-left: 3px solid var(--teal); border-radius: 4px; padding: 8px 12px; margin: 8px 0; font-size: 13px; color: #0B4F50; }
 
-  .avatar {
-    width: 36px; height: 36px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px; flex-shrink: 0;
-  }
-  .avatar.ai-av { background: linear-gradient(135deg, var(--teal), var(--teal-lt)); }
-  .avatar.user-av { background: var(--navy); color: var(--white); font-size: 14px; font-weight: 600; }
+.typing-indicator {
+  display: flex; gap: 5px; align-items: center; padding: 13px 17px;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; border-bottom-left-radius: 4px;
+  box-shadow: var(--shadow); width: fit-content;
+}
+.dot { width: 7px; height: 7px; background: var(--teal); border-radius: 50%; animation: bounce 1.2s infinite; }
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes bounce { 0%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-7px)} }
 
-  .bubble {
-    border-radius: 14px;
-    padding: 14px 18px;
-    font-size: 14.5px;
-    line-height: 1.7;
-    max-width: 680px;
-    box-shadow: var(--shadow);
-  }
-  .msg.user .bubble {
-    background: var(--navy);
-    color: var(--white);
-    border-bottom-right-radius: 4px;
-  }
-  .msg.ai .bubble {
-    background: var(--white);
-    color: var(--navy);
-    border-bottom-left-radius: 4px;
-    border: 1px solid var(--border);
-  }
+.input-bar { padding: 14px 28px 18px; background: var(--cream); border-top: 1px solid var(--border); }
+.input-wrap {
+  display: flex; gap: 10px; background: var(--white);
+  border: 1.5px solid var(--border); border-radius: 14px;
+  padding: 9px 11px; box-shadow: var(--shadow); transition: border-color 0.15s;
+}
+.input-wrap:focus-within { border-color: var(--teal); }
+#userInput {
+  flex: 1; border: none; outline: none;
+  font-family: 'Inter', sans-serif; font-size: 14px;
+  color: var(--navy); background: transparent; resize: none;
+  min-height: 24px; max-height: 130px; line-height: 1.5;
+}
+#userInput::placeholder { color: var(--muted); }
+#sendBtn {
+  background: linear-gradient(135deg, var(--teal), var(--teal-lt));
+  border: none; border-radius: 10px; width: 38px; height: 38px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font-size: 17px; flex-shrink: 0; transition: opacity 0.15s; align-self: flex-end;
+}
+#sendBtn:hover { opacity: 0.88; }
+#sendBtn:disabled { opacity: 0.4; cursor: not-allowed; }
+.input-meta { display: flex; justify-content: space-between; font-size: 10.5px; color: var(--muted); padding: 5px 2px 0; }
 
-  /* Markdown-style rendering inside bubbles */
-  .bubble h2 { font-family: 'DM Serif Display', serif; font-size: 17px; margin: 14px 0 6px; color: var(--teal); border-bottom: 1px solid var(--border); padding-bottom: 4px; }
-  .bubble h3 { font-size: 14px; font-weight: 600; margin: 10px 0 4px; color: var(--navy); }
-  .bubble ul, .bubble ol { padding-left: 20px; margin: 6px 0; }
-  .bubble li { margin: 3px 0; }
-  .bubble strong { font-weight: 600; }
-  .bubble em { color: var(--teal); font-style: normal; font-weight: 500; }
-  .bubble code { background: #EEF2F6; border-radius: 4px; padding: 1px 5px; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; }
-  .bubble table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 13px; }
-  .bubble th { background: var(--navy); color: var(--white); padding: 7px 10px; text-align: left; font-weight: 500; }
-  .bubble td { padding: 6px 10px; border-bottom: 1px solid var(--border); }
-  .bubble tr:nth-child(even) td { background: #F4F7FA; }
-  .bubble .warn-box { background: #FEF9EC; border-left: 3px solid var(--warn); border-radius: 4px; padding: 8px 12px; margin: 8px 0; font-size: 13px; color: #7D5A00; }
-  .bubble .danger-box { background: #FEF0EE; border-left: 3px solid var(--danger); border-radius: 4px; padding: 8px 12px; margin: 8px 0; font-size: 13px; color: var(--danger); }
-  .bubble .info-box { background: #EBF5F5; border-left: 3px solid var(--teal); border-radius: 4px; padding: 8px 12px; margin: 8px 0; font-size: 13px; color: #0B4F50; }
+/* ── DASHBOARD PANEL ── */
+.dashboard {
+  flex: 1; overflow-y: auto; padding: 24px 28px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.dash-title { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--navy); margin-bottom: 4px; }
+.dash-sub { color: var(--muted); font-size: 13px; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.stat-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 18px;
+  box-shadow: var(--shadow);
+}
+.stat-card .stat-icon { font-size: 24px; margin-bottom: 8px; }
+.stat-card .stat-val { font-size: 26px; font-weight: 700; color: var(--navy); }
+.stat-card .stat-label { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+.stat-card.teal { border-top: 3px solid var(--teal); }
+.stat-card.purple { border-top: 3px solid var(--purple); }
+.stat-card.green { border-top: 3px solid var(--success); }
+.stat-card.orange { border-top: 3px solid var(--warn); }
 
-  .typing-indicator {
-    display: flex; gap: 5px; align-items: center; padding: 14px 18px;
-    background: var(--white); border: 1px solid var(--border);
-    border-radius: 14px; border-bottom-left-radius: 4px;
-    box-shadow: var(--shadow); width: fit-content;
-  }
-  .dot { width: 7px; height: 7px; background: var(--teal); border-radius: 50%; animation: bounce 1.2s infinite; }
-  .dot:nth-child(2) { animation-delay: 0.2s; }
-  .dot:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes bounce { 0%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-7px)} }
+.section-title { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+.quick-access-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.qa-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px; cursor: pointer;
+  transition: all 0.15s; text-align: center; box-shadow: var(--shadow);
+}
+.qa-card:hover { border-color: var(--teal); box-shadow: 0 4px 20px rgba(13,125,126,0.15); transform: translateY(-2px); }
+.qa-card .qa-icon { font-size: 26px; margin-bottom: 8px; }
+.qa-card .qa-title { font-size: 12.5px; font-weight: 600; color: var(--navy); margin-bottom: 3px; }
+.qa-card .qa-desc { font-size: 11px; color: var(--muted); }
 
-  /* ── INPUT BAR ── */
-  .input-bar {
-    padding: 16px 32px 20px;
-    background: var(--cream);
-    border-top: 1px solid var(--border);
-  }
-  .input-wrap {
-    display: flex;
-    gap: 10px;
-    background: var(--white);
-    border: 1.5px solid var(--border);
-    border-radius: 14px;
-    padding: 10px 12px;
-    box-shadow: var(--shadow);
-    transition: border-color 0.15s;
-  }
-  .input-wrap:focus-within { border-color: var(--teal); }
-  #userInput {
-    flex: 1;
-    border: none;
-    outline: none;
-    font-family: 'Inter', sans-serif;
-    font-size: 14.5px;
-    color: var(--navy);
-    background: transparent;
-    resize: none;
-    min-height: 24px;
-    max-height: 140px;
-    line-height: 1.5;
-  }
-  #userInput::placeholder { color: var(--muted); }
-  #sendBtn {
-    background: linear-gradient(135deg, var(--teal), var(--teal-lt));
-    border: none;
-    border-radius: 10px;
-    width: 40px; height: 40px;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-    transition: opacity 0.15s;
-    align-self: flex-end;
-  }
-  #sendBtn:hover { opacity: 0.88; }
-  #sendBtn:disabled { opacity: 0.4; cursor: not-allowed; }
-  .input-meta {
-    display: flex; justify-content: space-between;
-    font-size: 11px; color: var(--muted);
-    padding: 6px 2px 0;
-  }
+.recent-list { display: flex; flex-direction: column; gap: 8px; }
+.recent-item {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 16px;
+  display: flex; align-items: center; gap: 12px;
+  cursor: pointer; transition: all 0.15s;
+}
+.recent-item:hover { border-color: var(--teal); background: var(--teal-xlt); }
+.recent-item .ri-icon { font-size: 20px; flex-shrink: 0; }
+.recent-item .ri-text { flex: 1; font-size: 13px; color: var(--navy); }
+.recent-item .ri-arrow { color: var(--muted); font-size: 12px; }
 
+/* ── CALCULATOR PANEL ── */
+.calc-panel { flex: 1; overflow-y: auto; padding: 24px 28px; }
+.calc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.calc-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; padding: 20px; box-shadow: var(--shadow);
+}
+.calc-card h3 { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+.calc-card p { font-size: 11.5px; color: var(--muted); margin-bottom: 14px; }
+.calc-field { margin-bottom: 10px; }
+.calc-field label { font-size: 11.5px; font-weight: 500; color: var(--navy); display: block; margin-bottom: 4px; }
+.calc-field input, .calc-field select {
+  width: 100%; padding: 8px 10px; border: 1.5px solid var(--border);
+  border-radius: 8px; font-size: 13px; font-family: 'Inter', sans-serif;
+  color: var(--navy); outline: none; transition: border-color 0.15s;
+}
+.calc-field input:focus, .calc-field select:focus { border-color: var(--teal); }
+.calc-btn {
+  background: linear-gradient(135deg, var(--teal), var(--teal-lt));
+  color: var(--white); border: none; border-radius: 8px;
+  padding: 9px 18px; font-size: 13px; font-weight: 500;
+  cursor: pointer; width: 100%; margin-top: 6px; transition: opacity 0.15s;
+}
+.calc-btn:hover { opacity: 0.88; }
+.calc-result {
+  margin-top: 12px; padding: 10px 14px;
+  background: var(--teal-xlt); border: 1px solid var(--teal);
+  border-radius: 8px; font-size: 13px; color: #0B4F50;
+  display: none;
+}
+.calc-result.show { display: block; }
 
-  /* ── MOBILE BOTTOM SHEET (topics drawer) ── */
-  .mob-topics-btn {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--white);
-    font-size: 22px;
-    cursor: pointer;
-    padding: 4px 8px;
-    line-height: 1;
-  }
+/* ── DRUGS PANEL ── */
+.drugs-panel { flex: 1; overflow-y: auto; padding: 24px 28px; }
+.drug-search-bar {
+  display: flex; gap: 10px; margin-bottom: 20px;
+}
+.drug-search-bar input {
+  flex: 1; padding: 10px 14px; border: 1.5px solid var(--border);
+  border-radius: 10px; font-size: 14px; font-family: 'Inter', sans-serif;
+  color: var(--navy); outline: none;
+}
+.drug-search-bar input:focus { border-color: var(--teal); }
+.drug-search-bar button {
+  background: linear-gradient(135deg, var(--teal), var(--teal-lt));
+  color: var(--white); border: none; border-radius: 10px;
+  padding: 10px 20px; font-size: 13px; font-weight: 500; cursor: pointer;
+}
+.drug-categories { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.drug-cat-btn {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 10px; padding: 14px 12px; cursor: pointer;
+  text-align: center; transition: all 0.15s; box-shadow: var(--shadow);
+}
+.drug-cat-btn:hover { border-color: var(--teal); transform: translateY(-1px); }
+.drug-cat-btn .dc-icon { font-size: 22px; margin-bottom: 6px; }
+.drug-cat-btn .dc-name { font-size: 12px; font-weight: 600; color: var(--navy); }
+.drug-cat-btn .dc-count { font-size: 10.5px; color: var(--muted); }
 
-  .drawer-overlay {
-    display: none;
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.45);
-    z-index: 200;
-    opacity: 0;
-    transition: opacity 0.25s;
-  }
-  .drawer-overlay.open { opacity: 1; }
+/* ── EXAM PANEL ── */
+.exam-panel { flex: 1; overflow-y: auto; padding: 24px 28px; }
+.exam-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.exam-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; padding: 20px; cursor: pointer;
+  transition: all 0.15s; box-shadow: var(--shadow);
+}
+.exam-card:hover { border-color: var(--teal); box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.exam-card .ex-icon { font-size: 30px; margin-bottom: 10px; }
+.exam-card h3 { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+.exam-card p { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+.exam-card .ex-btn {
+  background: var(--teal-xlt); color: var(--teal); border: 1px solid var(--teal);
+  border-radius: 7px; padding: 7px 14px; font-size: 12px; font-weight: 500;
+  cursor: pointer; transition: all 0.15s;
+}
+.exam-card .ex-btn:hover { background: var(--teal); color: var(--white); }
 
-  .drawer {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    background: var(--navy);
-    border-radius: 20px 20px 0 0;
-    padding: 0 16px 32px;
-    z-index: 201;
-    transform: translateY(100%);
-    transition: transform 0.3s cubic-bezier(.32,.72,0,1);
-    max-height: 80vh;
-    overflow-y: auto;
-  }
-  .drawer.open { transform: translateY(0); }
-  .drawer-handle {
-    width: 40px; height: 4px;
-    background: rgba(255,255,255,0.2);
-    border-radius: 2px;
-    margin: 12px auto 16px;
-  }
-  .drawer-title {
-    font-size: 11px; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 1px;
-    color: var(--muted); margin-bottom: 12px;
-  }
-  .drawer .quick-btn {
-    width: 100%;
-    padding: 14px 14px;
-    font-size: 14px;
-    margin-bottom: 8px;
-  }
-  .drawer-disclaimer {
-    background: rgba(192,57,43,0.15);
-    border: 1px solid rgba(192,57,43,0.3);
-    border-radius: 8px;
-    padding: 10px 12px;
-    font-size: 11px;
-    color: #E8A89F;
-    line-height: 1.5;
-    margin-top: 8px;
-  }
-  .drawer-disclaimer strong { color: #F1948A; display: block; margin-bottom: 2px; }
+/* ── MOBILE DRAWER ── */
+.drawer-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5); z-index: 200; opacity: 0; transition: opacity 0.25s;
+}
+.drawer-overlay.open { opacity: 1; }
+.drawer {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--navy); border-radius: 20px 20px 0 0;
+  padding: 0 16px 32px; z-index: 201;
+  transform: translateY(100%); transition: transform 0.3s cubic-bezier(.32,.72,0,1);
+  max-height: 80vh; overflow-y: auto;
+}
+.drawer.open { transform: translateY(0); }
+.drawer-handle { width: 40px; height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; margin: 12px auto 16px; }
+.drawer-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 12px; }
+.drawer .quick-btn { width: 100%; padding: 14px; font-size: 13.5px; margin-bottom: 8px; }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 680px) {
-    header { padding: 0 14px; height: 54px; }
-    .header-badge { display: none; }
-    .mob-topics-btn { display: block; }
-    .drawer-overlay { display: block; }
-
-    .sidebar { display: none; }
-    .app { height: calc(100vh - 54px); }
-
-    .chat-area { padding: 12px 14px 12px; gap: 14px; }
-
-    .msg { max-width: 100%; }
-    .bubble { font-size: 14px; padding: 11px 14px; max-width: calc(100vw - 80px); }
-    .bubble table { font-size: 12px; display: block; overflow-x: auto; }
-    .bubble h2 { font-size: 15px; }
-    .bubble h3 { font-size: 13px; }
-
-    .avatar { width: 30px; height: 30px; font-size: 14px; }
-
-    .input-bar { padding: 10px 12px 16px; }
-    .input-wrap { padding: 8px 10px; border-radius: 12px; }
-    #userInput { font-size: 14px; }
-    #sendBtn { width: 36px; height: 36px; font-size: 16px; border-radius: 8px; }
-    .input-meta { font-size: 10px; }
-    .input-meta span:first-child { display: none; }
-
-    .welcome { padding: 24px 12px; }
-    .welcome-cross { font-size: 40px; margin-bottom: 10px; }
-    .welcome h1 { font-size: 22px; }
-    .welcome p { font-size: 13.5px; }
-    .capability-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-    .cap-card { padding: 10px 11px; font-size: 12px; }
-    .cap-card strong { font-size: 12px; }
-  }
-
-  @media (max-width: 360px) {
-    .capability-grid { grid-template-columns: 1fr; }
-    .bubble { max-width: calc(100vw - 60px); }
-  }
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .quick-access-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 700px) {
+  header { padding: 0 14px; height: 52px; }
+  .header-badge { display: none; }
+  .mob-menu-btn { display: block; }
+  .drawer-overlay { display: block; }
+  .sidebar { display: none; }
+  .tabs-nav { padding: 0 8px; }
+  .tab-btn { padding: 10px 10px; font-size: 11.5px; gap: 5px; }
+  .app { height: calc(100vh - 52px - 40px); }
+  .chat-area { padding: 12px 14px; gap: 14px; }
+  .bubble { font-size: 13.5px; padding: 11px 14px; max-width: calc(100vw - 76px); }
+  .bubble table { display: block; overflow-x: auto; font-size: 11.5px; }
+  .input-bar { padding: 10px 12px 16px; }
+  .dashboard, .calc-panel, .drugs-panel, .exam-panel { padding: 16px 14px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .quick-access-grid { grid-template-columns: repeat(2, 1fr); }
+  .calc-grid { grid-template-columns: 1fr; }
+  .drug-categories { grid-template-columns: repeat(2, 1fr); }
+  .exam-grid { grid-template-columns: 1fr; }
+  .welcome { padding: 20px 10px; }
+  .welcome h1 { font-size: 22px; }
+  .capability-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+}
+@media (max-width: 380px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .tab-btn span.tab-label { display: none; }
+}
 </style>
 </head>
 <body>
@@ -417,58 +422,76 @@
     <div class="logo-icon">⚕️</div>
     <div class="logo-text">MedAI <span>Pro</span></div>
   </div>
-  <div class="header-badge">Expert Medical Assistant</div>
-  <button class="mob-topics-btn" onclick="openDrawer()" title="Quick Topics">☰</button>
+  <div class="header-right">
+    <div class="header-badge">Expert Medical AI</div>
+    <button class="mob-menu-btn" onclick="openDrawer()">☰</button>
+  </div>
 </header>
 
-<!-- Mobile bottom drawer -->
+<!-- Tab Nav -->
+<nav class="tabs-nav">
+  <button class="tab-btn active" onclick="switchTab('chat')" id="tab-chat">
+    <span class="tab-icon">💬</span><span class="tab-label">AI Chat</span>
+  </button>
+  <button class="tab-btn" onclick="switchTab('dashboard')" id="tab-dashboard">
+    <span class="tab-icon">📊</span><span class="tab-label">Dashboard</span>
+  </button>
+  <button class="tab-btn" onclick="switchTab('calc')" id="tab-calc">
+    <span class="tab-icon">🧮</span><span class="tab-label">Calculators</span>
+  </button>
+  <button class="tab-btn" onclick="switchTab('drugs')" id="tab-drugs">
+    <span class="tab-icon">💊</span><span class="tab-label">Drug Reference</span>
+  </button>
+  <button class="tab-btn" onclick="switchTab('exam')" id="tab-exam">
+    <span class="tab-icon">🎓</span><span class="tab-label">Exam Prep</span>
+  </button>
+</nav>
+
+<!-- Mobile Drawer -->
 <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
 <div class="drawer" id="drawer">
   <div class="drawer-handle"></div>
   <div class="drawer-title">⚡ Quick Topics</div>
-  <button class="quick-btn" onclick="sendQuick('Explain a nursing care plan for a patient with heart failure');closeDrawer()"><span class="qb-icon">🫀</span>Heart Failure Care Plan</button>
-  <button class="quick-btn" onclick="sendQuick('What are the drug information details for Metformin?');closeDrawer()"><span class="qb-icon">💊</span>Drug Info: Metformin</button>
-  <button class="quick-btn" onclick="sendQuick('Explain the pathophysiology of Type 2 Diabetes');closeDrawer()"><span class="qb-icon">🩸</span>Type 2 Diabetes</button>
-  <button class="quick-btn" onclick="sendQuick('How do I calculate GFR and what does it indicate?');closeDrawer()"><span class="qb-icon">🧮</span>GFR Calculator Guide</button>
-  <button class="quick-btn" onclick="sendQuick('What are red flag symptoms that require urgent emergency evaluation?');closeDrawer()"><span class="qb-icon">🚨</span>Red Flag Symptoms</button>
-  <button class="quick-btn" onclick="sendQuick('Teach me the anatomy of the heart step by step');closeDrawer()"><span class="qb-icon">📚</span>Heart Anatomy</button>
-  <button class="quick-btn" onclick="sendQuick('What is the CURB-65 score and how is it used?');closeDrawer()"><span class="qb-icon">📊</span>CURB-65 Score</button>
-  <button class="quick-btn" onclick="sendQuick('Explain common NCLEX-style nursing questions for cardiovascular system');closeDrawer()"><span class="qb-icon">🎓</span>NCLEX Cardio Questions</button>
-  <div class="drawer-disclaimer">
-    <strong>⚠️ Medical Disclaimer</strong>
-    For education and clinical support only. Does not replace professional medical advice. Always consult a qualified healthcare provider.
-  </div>
+  <button class="quick-btn" onclick="goChat('Explain a nursing care plan for a patient with heart failure')"><span class="qb-icon">🫀</span>Heart Failure Care Plan</button>
+  <button class="quick-btn" onclick="goChat('What are the drug information details for Metformin?')"><span class="qb-icon">💊</span>Drug Info: Metformin</button>
+  <button class="quick-btn" onclick="goChat('Explain the pathophysiology of Type 2 Diabetes')"><span class="qb-icon">🩸</span>Type 2 Diabetes</button>
+  <button class="quick-btn" onclick="goChat('How do I calculate GFR and what does it indicate?')"><span class="qb-icon">🧮</span>GFR Calculator Guide</button>
+  <button class="quick-btn" onclick="goChat('What are red flag symptoms that require urgent emergency evaluation?')"><span class="qb-icon">🚨</span>Red Flag Symptoms</button>
+  <button class="quick-btn" onclick="goChat('Teach me the anatomy of the heart step by step')"><span class="qb-icon">📚</span>Heart Anatomy</button>
+  <button class="quick-btn" onclick="goChat('What is the CURB-65 score and how is it used?')"><span class="qb-icon">📊</span>CURB-65 Score</button>
+  <button class="quick-btn" onclick="goChat('Explain common NCLEX-style nursing questions for cardiovascular system')"><span class="qb-icon">🎓</span>NCLEX Cardio Questions</button>
 </div>
 
 <div class="app">
   <!-- Sidebar -->
   <aside class="sidebar">
-    <div class="sidebar-label">Quick Topics</div>
-    <button class="quick-btn" onclick="sendQuick('Explain a nursing care plan for a patient with heart failure')"><span class="qb-icon">🫀</span>Heart Failure Care Plan</button>
-    <button class="quick-btn" onclick="sendQuick('What are the drug information details for Metformin?')"><span class="qb-icon">💊</span>Drug Info: Metformin</button>
-    <button class="quick-btn" onclick="sendQuick('Explain the pathophysiology of Type 2 Diabetes')"><span class="qb-icon">🩸</span>Type 2 Diabetes</button>
-    <button class="quick-btn" onclick="sendQuick('How do I calculate GFR and what does it indicate?')"><span class="qb-icon">🧮</span>GFR Calculator Guide</button>
-    <button class="quick-btn" onclick="sendQuick('What are red flag symptoms that require urgent emergency evaluation?')"><span class="qb-icon">🚨</span>Red Flag Symptoms</button>
-    <button class="quick-btn" onclick="sendQuick('Teach me the anatomy of the heart step by step')"><span class="qb-icon">📚</span>Heart Anatomy</button>
-    <button class="quick-btn" onclick="sendQuick('What is the CURB-65 score and how is it used?')"><span class="qb-icon">📊</span>CURB-65 Score</button>
-    <button class="quick-btn" onclick="sendQuick('Explain common NCLEX-style nursing questions for cardiovascular system')"><span class="qb-icon">🎓</span>NCLEX Cardio Questions</button>
-
+    <div class="sidebar-section">
+      <div class="sidebar-label">Quick Topics</div>
+      <button class="quick-btn" onclick="sendQuick('Explain a nursing care plan for a patient with heart failure')"><span class="qb-icon">🫀</span>Heart Failure Care Plan</button>
+      <button class="quick-btn" onclick="sendQuick('What are the drug information details for Metformin?')"><span class="qb-icon">💊</span>Drug Info: Metformin</button>
+      <button class="quick-btn" onclick="sendQuick('Explain the pathophysiology of Type 2 Diabetes')"><span class="qb-icon">🩸</span>Type 2 Diabetes</button>
+      <button class="quick-btn" onclick="sendQuick('How do I calculate GFR and what does it indicate?')"><span class="qb-icon">🧮</span>GFR Calculator Guide</button>
+      <button class="quick-btn" onclick="sendQuick('What are red flag symptoms that require urgent emergency evaluation?')"><span class="qb-icon">🚨</span>Red Flag Symptoms</button>
+      <button class="quick-btn" onclick="sendQuick('Teach me the anatomy of the heart step by step')"><span class="qb-icon">📚</span>Heart Anatomy</button>
+      <button class="quick-btn" onclick="sendQuick('What is the CURB-65 score and how is it used?')"><span class="qb-icon">📊</span>CURB-65 Score</button>
+      <button class="quick-btn" onclick="sendQuick('Explain common NCLEX-style nursing questions for cardiovascular system')"><span class="qb-icon">🎓</span>NCLEX Cardio Questions</button>
+    </div>
     <div class="disclaimer">
       <strong>⚠️ Medical Disclaimer</strong>
-      This tool is for education and clinical support only. It does not replace professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider.
+      For education and clinical support only. Does not replace professional medical advice. Always consult a qualified healthcare provider.
     </div>
   </aside>
 
-  <!-- Chat -->
-  <main class="main">
+  <!-- ── CHAT TAB ── -->
+  <div class="tab-panel active" id="panel-chat">
     <div class="chat-area" id="chatArea">
       <div class="welcome" id="welcomeScreen">
         <div class="welcome-cross">⚕️</div>
         <h1>Welcome to MedAI Pro</h1>
-        <p>Your advanced AI-powered Medical & Nursing Assistant. Ask about diseases, drugs, nursing care plans, anatomy, clinical reasoning, medical calculations, and more.</p>
+        <p>Your advanced AI Medical & Nursing Assistant. Ask anything about diseases, drugs, care plans, anatomy, clinical reasoning, calculations, and more.</p>
         <div class="capability-grid">
-          <div class="cap-card"><span class="cap-icon">🏥</span><strong>Clinical Medicine</strong><span>Diseases, diagnosis, treatment, prognosis</span></div>
-          <div class="cap-card"><span class="cap-icon">💉</span><strong>Nursing</strong><span>Care plans, interventions, assessments</span></div>
+          <div class="cap-card"><span class="cap-icon">🏥</span><strong>Clinical Medicine</strong><span>Diseases, diagnosis, treatment</span></div>
+          <div class="cap-card"><span class="cap-icon">💉</span><strong>Nursing</strong><span>Care plans, interventions</span></div>
           <div class="cap-card"><span class="cap-icon">💊</span><strong>Pharmacology</strong><span>Drug info, interactions, dosing</span></div>
           <div class="cap-card"><span class="cap-icon">🔬</span><strong>Basic Sciences</strong><span>Anatomy, physiology, pathology</span></div>
           <div class="cap-card"><span class="cap-icon">🧮</span><strong>Calculations</strong><span>BMI, GFR, drip rates, scores</span></div>
@@ -476,215 +499,379 @@
         </div>
       </div>
     </div>
-
     <div class="input-bar">
       <div class="input-wrap">
         <textarea id="userInput" placeholder="Ask a medical or nursing question…" rows="1"></textarea>
         <button id="sendBtn" onclick="sendMessage()" title="Send">➤</button>
       </div>
       <div class="input-meta">
-        <span>Press Enter to send · Shift+Enter for new line</span>
+        <span>Enter to send · Shift+Enter for new line</span>
         <span>Powered by Google Gemini (Free)</span>
       </div>
     </div>
-  </main>
-</div>
+  </div>
+
+  <!-- ── DASHBOARD TAB ── -->
+  <div class="tab-panel" id="panel-dashboard">
+    <div class="dashboard">
+      <div>
+        <div class="dash-title">Clinical Dashboard</div>
+        <div class="dash-sub">Your medical learning hub at a glance</div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card teal"><div class="stat-icon">💬</div><div class="stat-val" id="statMessages">0</div><div class="stat-label">Questions Asked</div></div>
+        <div class="stat-card purple"><div class="stat-icon">🧮</div><div class="stat-val" id="statCalcs">0</div><div class="stat-label">Calculations Done</div></div>
+        <div class="stat-card green"><div class="stat-icon">💊</div><div class="stat-val" id="statDrugs">0</div><div class="stat-label">Drug Lookups</div></div>
+        <div class="stat-card orange"><div class="stat-icon">🎓</div><div class="stat-val" id="statExams">0</div><div class="stat-label">Exam Questions</div></div>
+      </div>
+      <div>
+        <div class="section-title">⚡ Quick Access</div>
+        <div class="quick-access-grid">
+          <div class="qa-card" onclick="goChat('Explain the pathophysiology and nursing management of Myocardial Infarction')"><div class="qa-icon">❤️</div><div class="qa-title">MI Management</div><div class="qa-desc">Pathophysiology & nursing care</div></div>
+          <div class="qa-card" onclick="goChat('What are the pharmacokinetics and nursing considerations for Warfarin?')"><div class="qa-icon">💊</div><div class="qa-title">Warfarin Guide</div><div class="qa-desc">Anticoagulation nursing care</div></div>
+          <div class="qa-card" onclick="goChat('Explain diabetic ketoacidosis management step by step')"><div class="qa-icon">🩸</div><div class="qa-title">DKA Protocol</div><div class="qa-desc">Emergency management</div></div>
+          <div class="qa-card" onclick="goChat('What are the 5 rights of medication administration and common errors?')"><div class="qa-icon">✅</div><div class="qa-title">5 Rights of Meds</div><div class="qa-desc">Medication safety essentials</div></div>
+          <div class="qa-card" onclick="goChat('Explain sepsis criteria, SOFA score, and nursing interventions')"><div class="qa-icon">🚨</div><div class="qa-title">Sepsis Protocol</div><div class="qa-desc">SOFA score & interventions</div></div>
+          <div class="qa-card" onclick="goChat('What are the stages of pressure ulcers and nursing prevention strategies?')"><div class="qa-icon">🩹</div><div class="qa-title">Pressure Ulcers</div><div class="qa-desc">Staging & prevention</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="section-title">📋 Common Topics</div>
+        <div class="recent-list">
+          <div class="recent-item" onclick="goChat('Explain the Glasgow Coma Scale and how to assess it')"><div class="ri-icon">🧠</div><div class="ri-text">Glasgow Coma Scale Assessment</div><div class="ri-arrow">→</div></div>
+          <div class="recent-item" onclick="goChat('What are normal vital signs ranges for adults, children, and infants?')"><div class="ri-icon">📊</div><div class="ri-text">Vital Signs Reference Ranges</div><div class="ri-arrow">→</div></div>
+          <div class="recent-item" onclick="goChat('Explain fluid and electrolyte imbalances and their nursing management')"><div class="ri-icon">💧</div><div class="ri-text">Fluid & Electrolyte Imbalances</div><div class="ri-arrow">→</div></div>
+          <div class="recent-item" onclick="goChat('What are the types of shock, causes, and nursing interventions?')"><div class="ri-icon">⚡</div><div class="ri-text">Types of Shock & Management</div><div class="ri-arrow">→</div></div>
+          <div class="recent-item" onclick="goChat('Explain pain assessment tools and nursing pain management strategies')"><div class="ri-icon">🎯</div><div class="ri-text">Pain Assessment & Management</div><div class="ri-arrow">→</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CALCULATORS TAB ── -->
+  <div class="tab-panel" id="panel-calc">
+    <div class="calc-panel">
+      <div style="margin-bottom:20px">
+        <div class="dash-title">Medical Calculators</div>
+        <div class="dash-sub">Essential clinical calculation tools</div>
+      </div>
+      <div class="calc-grid">
+
+        <!-- BMI -->
+        <div class="calc-card">
+          <h3>⚖️ BMI Calculator</h3>
+          <p>Body Mass Index — weight classification tool</p>
+          <div class="calc-field"><label>Weight (kg)</label><input type="number" id="bmiWeight" placeholder="e.g. 70"></div>
+          <div class="calc-field"><label>Height (cm)</label><input type="number" id="bmiHeight" placeholder="e.g. 170"></div>
+          <button class="calc-btn" onclick="calcBMI()">Calculate BMI</button>
+          <div class="calc-result" id="bmiResult"></div>
+        </div>
+
+        <!-- GFR -->
+        <div class="calc-card">
+          <h3>🫘 eGFR (CKD-EPI)</h3>
+          <p>Estimated Glomerular Filtration Rate</p>
+          <div class="calc-field"><label>Age (years)</label><input type="number" id="gfrAge" placeholder="e.g. 45"></div>
+          <div class="calc-field"><label>Serum Creatinine (mg/dL)</label><input type="number" id="gfrCr" placeholder="e.g. 1.2" step="0.1"></div>
+          <div class="calc-field"><label>Sex</label><select id="gfrSex"><option value="male">Male</option><option value="female">Female</option></select></div>
+          <button class="calc-btn" onclick="calcGFR()">Calculate eGFR</button>
+          <div class="calc-result" id="gfrResult"></div>
+        </div>
+
+        <!-- CURB-65 -->
+        <div class="calc-card">
+          <h3>🫁 CURB-65 Score</h3>
+          <p>Pneumonia severity assessment tool</p>
+          <div class="calc-field"><label><input type="checkbox" id="curb1"> Confusion (new onset)</label></div>
+          <div class="calc-field"><label><input type="checkbox" id="curb2"> Urea > 7 mmol/L (BUN > 19)</label></div>
+          <div class="calc-field"><label><input type="checkbox" id="curb3"> RR ≥ 30/min</label></div>
+          <div class="calc-field"><label><input type="checkbox" id="curb4"> BP < 90/60 mmHg</label></div>
+          <div class="calc-field"><label><input type="checkbox" id="curb5"> Age ≥ 65</label></div>
+          <button class="calc-btn" onclick="calcCURB()">Calculate Score</button>
+          <div class="calc-result" id="curbResult"></div>
+        </div>
+
+        <!-- Drip Rate -->
+        <div class="calc-card">
+          <h3>💧 IV Drip Rate</h3>
+          <p>Calculate drops per minute for IV infusion</p>
+          <div class="calc-field"><label>Volume to infuse (mL)</label><input type="number" id="dripVol" placeholder="e.g. 500"></div>
+          <div class="calc-field"><label>Time (hours)</label><input type="number" id="dripTime" placeholder="e.g. 4"></div>
+          <div class="calc-field"><label>Drop factor (gtts/mL)</label><select id="dripFactor"><option value="10">10 gtts/mL (macrodrip)</option><option value="15">15 gtts/mL (macrodrip)</option><option value="20">20 gtts/mL (macrodrip)</option><option value="60">60 gtts/mL (microdrip)</option></select></div>
+          <button class="calc-btn" onclick="calcDrip()">Calculate Rate</button>
+          <div class="calc-result" id="dripResult"></div>
+        </div>
+
+        <!-- BSA -->
+        <div class="calc-card">
+          <h3>📐 Body Surface Area</h3>
+          <p>Mosteller formula — used in drug dosing</p>
+          <div class="calc-field"><label>Weight (kg)</label><input type="number" id="bsaWeight" placeholder="e.g. 70"></div>
+          <div class="calc-field"><label>Height (cm)</label><input type="number" id="bsaHeight" placeholder="e.g. 170"></div>
+          <button class="calc-btn" onclick="calcBSA()">Calculate BSA</button>
+          <div class="calc-result" id="bsaResult"></div>
+        </div>
+
+        <!-- MAP -->
+        <div class="calc-card">
+          <h3>🩺 Mean Arterial Pressure</h3>
+          <p>Average pressure in arteries during one cardiac cycle</p>
+          <div class="calc-field"><label>Systolic BP (mmHg)</label><input type="number" id="mapSys" placeholder="e.g. 120"></div>
+          <div class="calc-field"><label>Diastolic BP (mmHg)</label><input type="number" id="mapDia" placeholder="e.g. 80"></div>
+          <button class="calc-btn" onclick="calcMAP()">Calculate MAP</button>
+          <div class="calc-result" id="mapResult"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DRUG REFERENCE TAB ── -->
+  <div class="tab-panel" id="panel-drugs">
+    <div class="drugs-panel">
+      <div style="margin-bottom:20px">
+        <div class="dash-title">Drug Reference</div>
+        <div class="dash-sub">Search any drug for complete clinical information</div>
+      </div>
+      <div class="drug-search-bar">
+        <input type="text" id="drugSearch" placeholder="Search a drug name (e.g. Metformin, Aspirin, Amoxicillin)…" onkeydown="if(event.key==='Enter')lookupDrug()">
+        <button onclick="lookupDrug()">🔍 Look Up</button>
+      </div>
+      <div class="section-title">Browse by Category</div>
+      <div class="drug-categories">
+        <div class="drug-cat-btn" onclick="goChat('List and explain common cardiovascular drugs including beta blockers, ACE inhibitors, statins, and anticoagulants')"><div class="dc-icon">❤️</div><div class="dc-name">Cardiovascular</div><div class="dc-count">Beta blockers, ACE inhibitors…</div></div>
+        <div class="drug-cat-btn" onclick="goChat('List and explain common antibiotics including penicillins, cephalosporins, macrolides, and fluoroquinolones')"><div class="dc-icon">🦠</div><div class="dc-name">Antibiotics</div><div class="dc-count">Penicillins, cephalosporins…</div></div>
+        <div class="drug-cat-btn" onclick="goChat('List and explain common diabetes medications including metformin, insulin types, and GLP-1 agonists')"><div class="dc-icon">🩸</div><div class="dc-name">Diabetes Drugs</div><div class="dc-count">Insulin, Metformin, GLP-1…</div></div>
+        <div class="drug-cat-btn" onclick="goChat('List and explain common analgesics including NSAIDs, opioids, and paracetamol with nursing considerations')"><div class="dc-icon">💊</div><div class="dc-name">Analgesics</div><div class="dc-count">NSAIDs, opioids, paracetamol…</div></div>
+        <div class="drug-cat-btn" onclick="goChat('List and explain common psychiatric medications including antidepressants, antipsychotics, and anxiolytics')"><div class="dc-icon">🧠</div><div class="dc-name">Psychiatry</div><div class="dc-count">Antidepressants, antipsychotics…</div></div>
+        <div class="drug-cat-btn" onclick="goChat('List and explain common respiratory drugs including bronchodilators, corticosteroids, and antihistamines')"><div class="dc-icon">🫁</div><div class="dc-name">Respiratory</div><div class="dc-count">Bronchodilators, steroids…</div></div>
+        <div class="drug-cat-btn" onclick="goChat('List and explain common gastrointestinal drugs including PPIs, antiemetics, and laxatives')"><div class="dc-icon">🏥</div><div class="dc-name">GI Drugs</div><div class="dc-count">PPIs, antiemetics, laxatives…</div></div>
+        <div class="drug-cat-btn" onclick="goChat('List and explain common neurological drugs including anticonvulsants, Parkinson drugs, and migraine medications')"><div class="dc-icon">⚡</div><div class="dc-name">Neurology</div><div class="dc-count">Anticonvulsants, Parkinson…</div></div>
+        <div class="drug-cat-btn" onclick="goChat('List and explain emergency drugs used in resuscitation including adrenaline, atropine, and amiodarone')"><div class="dc-icon">🚨</div><div class="dc-name">Emergency Drugs</div><div class="dc-count">Adrenaline, atropine…</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── EXAM PREP TAB ── -->
+  <div class="tab-panel" id="panel-exam">
+    <div class="exam-panel">
+      <div style="margin-bottom:20px">
+        <div class="dash-title">Exam Preparation</div>
+        <div class="dash-sub">Practice questions and study guides for medical exams</div>
+      </div>
+      <div class="exam-grid">
+        <div class="exam-card"><div class="ex-icon">🏥</div><h3>NCLEX-RN Practice</h3><p>Priority, delegation, pharmacology & clinical questions</p><button class="ex-btn" onclick="goChat('Give me 5 NCLEX-RN style questions on cardiovascular nursing with answers and rationales')">Start Practice →</button></div>
+        <div class="exam-card"><div class="ex-icon">🩺</div><h3>USMLE Step 1</h3><p>Pathophysiology, pharmacology & basic sciences</p><button class="ex-btn" onclick="goChat('Give me 5 USMLE Step 1 style questions on pharmacology with answers and explanations')">Start Practice →</button></div>
+        <div class="exam-card"><div class="ex-icon">💉</div><h3>Nursing Pharmacology</h3><p>Drug classes, mechanisms, side effects & interactions</p><button class="ex-btn" onclick="goChat('Quiz me on nursing pharmacology — give 5 questions covering drug mechanisms, side effects and nursing considerations')">Start Quiz →</button></div>
+        <div class="exam-card"><div class="ex-icon">🧠</div><h3>Anatomy & Physiology</h3><p>Systems, structures, functions and processes</p><button class="ex-btn" onclick="goChat('Give me 5 anatomy and physiology exam questions with detailed answers covering major body systems')">Start Quiz →</button></div>
+        <div class="exam-card"><div class="ex-icon">🔬</div><h3>Pathophysiology</h3><p>Disease mechanisms, signs, symptoms & progression</p><button class="ex-btn" onclick="goChat('Give me 5 pathophysiology questions on common diseases with detailed explanations')">Start Quiz →</button></div>
+        <div class="exam-card"><div class="ex-icon">🚨</div><h3>Critical Care Nursing</h3><p>ICU, emergency, prioritization & rapid response</p><button class="ex-btn" onclick="goChat('Give me 5 critical care nursing exam questions on ICU management with answers and rationales')">Start Quiz →</button></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- .app -->
 
 <script>
 const SYSTEM_PROMPT = `You are MedAI Pro, an advanced AI Medical and Nursing Assistant with expert-level knowledge in medicine, nursing, anatomy, physiology, pharmacology, pathology, microbiology, biochemistry, surgery, obstetrics and gynecology, pediatrics, psychiatry, cardiology, pulmonology, neurology, nephrology, gastroenterology, endocrinology, dermatology, oncology, emergency medicine, critical care, radiology, laboratory medicine, public health, nutrition, rehabilitation, medical ethics, evidence-based medicine, and all nursing specialties.
-
-You function as: Medical Educator, Nursing Tutor, Clinical Decision Support Assistant, Patient Education Assistant, Medical Research Assistant, Drug Information Specialist, Anatomy & Physiology Teacher, Medical Exam Preparation Tutor, and Medical Terminology Expert.
-
-Your responses should reflect established medical knowledge from sources comparable to WHO, CDC, NIH, NICE, UpToDate, Harrison's Principles, Gray's Anatomy, Robbins Pathology, Katzung Pharmacology, Brunner & Suddarth's Nursing, and NCLEX standards.
 
 FORMATTING RULES (use HTML, not markdown):
 - Use <h2> for major section headings
 - Use <h3> for sub-headings
 - Use <ul>/<li> for bullet lists
 - Use <strong> for key terms
-- Use <em> for clinical pearls or important highlights
+- Use <em> for clinical pearls
 - Use <table><thead><tr><th></th></tr></thead><tbody><tr><td></td></tr></tbody></table> for comparisons
-- Use <div class="warn-box">⚠️ ...</div> for warnings or cautions
-- Use <div class="danger-box">🚨 ...</div> for emergency/life-threatening alerts
-- Use <div class="info-box">ℹ️ ...</div> for clinical pearls or study tips
-- Use <code> for drug doses, values, or lab numbers
+- Use <div class="warn-box">⚠️ ...</div> for warnings
+- Use <div class="danger-box">🚨 ...</div> for emergency alerts
+- Use <div class="info-box">ℹ️ ...</div> for clinical pearls
+- Use <code> for drug doses and lab values
 
-DRUG INFORMATION FORMAT: When asked about a drug, include: Generic Name, Brand Names, Drug Class, Mechanism of Action, Indications, Contraindications, Adult Dose, Side Effects, Serious Adverse Effects, Drug Interactions, Pregnancy Safety, Nursing Considerations, Patient Education.
+SAFETY: Always recommend emergency evaluation for red-flag symptoms. Never fabricate. Always include: "This information is for educational purposes. Always consult a qualified healthcare professional."`;
 
-DISEASE FORMAT: When explaining a disease, include: Definition, Causes/Risk Factors, Pathophysiology, Signs & Symptoms, Differential Diagnosis, Diagnostic Tests, Treatment, Nursing Management, Complications, Prognosis.
-
-NURSING CARE PLAN FORMAT: Assessment, Nursing Diagnosis (NANDA), Goals, Interventions with Rationales, Evaluation, Patient Education.
-
-SAFETY: Always recommend emergency evaluation for red-flag symptoms. Never fabricate information. Clearly state when evidence is limited. Include the medical disclaimer: "This information is for educational purposes. Always consult a qualified healthcare professional for clinical decisions."`;
-
-// ── API KEY SETUP (Google Gemini — FREE) ──
+// ── API KEY ──
 let API_KEY = localStorage.getItem('medai_gemini_key') || '';
 if (!API_KEY) {
-  API_KEY = prompt('Enter your FREE Google Gemini API key:\n\n1. Go to: aistudio.google.com/apikey\n2. Sign in with Google\n3. Click "Create API key in new project"\n4. Copy and paste it here\n\nNo credit card required!', '');
+  API_KEY = prompt('Enter your FREE Google Gemini API key:\n\n1. Go to: aistudio.google.com/apikey\n2. Sign in with Google\n3. Click "Create API key in new project"\n4. Paste it here\n\nNo credit card required!', '');
   if (API_KEY) localStorage.setItem('medai_gemini_key', API_KEY);
 }
 
+// ── STATS ──
+let stats = JSON.parse(localStorage.getItem('medai_stats') || '{"messages":0,"calcs":0,"drugs":0,"exams":0}');
+function saveStats() { localStorage.setItem('medai_stats', JSON.stringify(stats)); updateStatDisplay(); }
+function updateStatDisplay() {
+  document.getElementById('statMessages').textContent = stats.messages;
+  document.getElementById('statCalcs').textContent = stats.calcs;
+  document.getElementById('statDrugs').textContent = stats.drugs;
+  document.getElementById('statExams').textContent = stats.exams;
+}
+updateStatDisplay();
+
 const conversationHistory = [];
 
-function autoResize(el) {
-  el.style.height = 'auto';
-  el.style.height = Math.min(el.scrollHeight, 140) + 'px';
+// ── TABS ──
+function switchTab(name) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  document.getElementById('panel-' + name).classList.add('active');
+  if (name === 'dashboard') updateStatDisplay();
 }
 
+function goChat(text) {
+  closeDrawer();
+  switchTab('chat');
+  setTimeout(() => { document.getElementById('userInput').value = text; sendMessage(); }, 100);
+}
+
+// ── DRAWER ──
+function openDrawer() {
+  const o = document.getElementById('drawerOverlay'), d = document.getElementById('drawer');
+  o.style.display = 'block'; d.style.display = 'block';
+  requestAnimationFrame(() => { o.classList.add('open'); d.classList.add('open'); });
+  document.body.style.overflow = 'hidden';
+}
+function closeDrawer() {
+  const o = document.getElementById('drawerOverlay'), d = document.getElementById('drawer');
+  o.classList.remove('open'); d.classList.remove('open');
+  setTimeout(() => { o.style.display = 'none'; d.style.display = 'none'; }, 300);
+  document.body.style.overflow = '';
+}
+
+// ── CHAT ──
 const input = document.getElementById('userInput');
-input.addEventListener('input', () => autoResize(input));
-input.addEventListener('keydown', e => {
-  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
-});
+input.addEventListener('input', () => { input.style.height='auto'; input.style.height=Math.min(input.scrollHeight,130)+'px'; });
+input.addEventListener('keydown', e => { if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();} });
 
-function sendQuick(text) {
-  input.value = text;
-  sendMessage();
-}
+function sendQuick(text) { input.value = text; sendMessage(); }
 
-function appendMessage(role, htmlContent) {
-  const welcome = document.getElementById('welcomeScreen');
-  if (welcome) welcome.remove();
-
-  const chatArea = document.getElementById('chatArea');
-  const wrap = document.createElement('div');
-  wrap.className = `msg ${role}`;
-
-  const av = document.createElement('div');
-  av.className = `avatar ${role === 'ai' ? 'ai-av' : 'user-av'}`;
-  av.textContent = role === 'ai' ? '⚕️' : 'U';
-
-  const bubble = document.createElement('div');
-  bubble.className = 'bubble';
-  bubble.innerHTML = htmlContent;
-
-  wrap.appendChild(av);
-  wrap.appendChild(bubble);
-  chatArea.appendChild(wrap);
-  chatArea.scrollTop = chatArea.scrollHeight;
-  return bubble;
+function appendMessage(role, html) {
+  document.getElementById('welcomeScreen')?.remove();
+  const ca = document.getElementById('chatArea');
+  const wrap = document.createElement('div'); wrap.className = 'msg ' + role;
+  const av = document.createElement('div'); av.className = 'avatar ' + (role==='ai'?'ai-av':'user-av'); av.textContent = role==='ai'?'⚕️':'U';
+  const bub = document.createElement('div'); bub.className = 'bubble'; bub.innerHTML = html;
+  wrap.appendChild(av); wrap.appendChild(bub); ca.appendChild(wrap);
+  ca.scrollTop = ca.scrollHeight;
 }
 
 function showTyping() {
-  const welcome = document.getElementById('welcomeScreen');
-  if (welcome) welcome.remove();
-  const chatArea = document.getElementById('chatArea');
-  const wrap = document.createElement('div');
-  wrap.className = 'msg ai';
-  wrap.id = 'typingIndicator';
-  const av = document.createElement('div');
-  av.className = 'avatar ai-av';
-  av.textContent = '⚕️';
-  const ind = document.createElement('div');
-  ind.className = 'typing-indicator';
-  ind.innerHTML = '<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
-  wrap.appendChild(av);
-  wrap.appendChild(ind);
-  chatArea.appendChild(wrap);
-  chatArea.scrollTop = chatArea.scrollHeight;
+  document.getElementById('welcomeScreen')?.remove();
+  const ca = document.getElementById('chatArea');
+  const wrap = document.createElement('div'); wrap.className='msg ai'; wrap.id='typingIndicator';
+  const av = document.createElement('div'); av.className='avatar ai-av'; av.textContent='⚕️';
+  const ind = document.createElement('div'); ind.className='typing-indicator';
+  ind.innerHTML='<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
+  wrap.appendChild(av); wrap.appendChild(ind); ca.appendChild(wrap);
+  ca.scrollTop = ca.scrollHeight;
 }
-
-function removeTyping() {
-  const t = document.getElementById('typingIndicator');
-  if (t) t.remove();
-}
-
-function escapeHtml(text) {
-  return text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
+function removeTyping() { document.getElementById('typingIndicator')?.remove(); }
+function escapeHtml(t) { return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
 async function sendMessage() {
-  const text = input.value.trim();
-  if (!text) return;
-
+  const text = input.value.trim(); if (!text) return;
   if (!API_KEY) {
-    API_KEY = prompt('No API key found.\nGet a free key at aistudio.google.com/apikey\nEnter your Gemini API key:', '');
-    if (API_KEY) localStorage.setItem('medai_gemini_key', API_KEY);
-    else return;
+    API_KEY = prompt('No API key. Get one free at aistudio.google.com/apikey\nPaste your Gemini key:', '');
+    if (API_KEY) localStorage.setItem('medai_gemini_key', API_KEY); else return;
   }
-
   const btn = document.getElementById('sendBtn');
-  btn.disabled = true;
-  input.value = '';
-  input.style.height = 'auto';
-
+  btn.disabled = true; input.value = ''; input.style.height = 'auto';
   appendMessage('user', escapeHtml(text));
   conversationHistory.push({ role: 'user', content: text });
-
+  stats.messages++; saveStats();
   showTyping();
-
   try {
-    const geminiContents = conversationHistory.map(m => ({
-      role: m.role === 'assistant' ? 'model' : 'user',
-      parts: [{ text: m.content }]
-    }));
-
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-          contents: geminiContents,
-          generationConfig: { maxOutputTokens: 2048, temperature: 0.4 }
-        })
-      }
-    );
-
-    const data = await response.json();
-
-    if (!response.ok) {
+    const contents = conversationHistory.map(m => ({ role: m.role==='assistant'?'model':'user', parts:[{text:m.content}] }));
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ systemInstruction:{parts:[{text:SYSTEM_PROMPT}]}, contents, generationConfig:{maxOutputTokens:2048,temperature:0.4} })
+    });
+    const data = await res.json();
+    if (!res.ok) {
       removeTyping();
-      const errMsg = data.error?.message || JSON.stringify(data);
-      if (response.status === 400 || response.status === 403) {
-        localStorage.removeItem('medai_gemini_key');
-        API_KEY = '';
-        appendMessage('ai', `<div class="danger-box">🚨 <strong>Invalid API Key.</strong> Your key was cleared. Reload and get a new key from <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a> — click "Create API key in <strong>new project</strong>".<br><br>Error: ${errMsg}</div>`);
-      } else {
-        appendMessage('ai', `<div class="danger-box">🚨 <strong>API Error ${response.status}:</strong> ${errMsg}</div>`);
-      }
-      btn.disabled = false;
-      input.focus();
-      return;
+      const err = data.error?.message || JSON.stringify(data);
+      if (res.status===400||res.status===403) {
+        localStorage.removeItem('medai_gemini_key'); API_KEY='';
+        appendMessage('ai', `<div class="danger-box">🚨 <strong>Invalid API Key.</strong> Cleared. Reload and get a new key from <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a> — click "Create API key in new project".<br><br>${err}</div>`);
+      } else { appendMessage('ai', `<div class="danger-box">🚨 <strong>API Error ${res.status}:</strong> ${err}</div>`); }
+      btn.disabled=false; input.focus(); return;
     }
-
-    const reply = data.candidates?.[0]?.content?.parts?.map(p => p.text || '').join('') || 'No response received.';
-    conversationHistory.push({ role: 'assistant', content: reply });
-    removeTyping();
-    appendMessage('ai', reply);
-  } catch (err) {
-    removeTyping();
-    appendMessage('ai', `<div class="danger-box">🚨 <strong>Connection error:</strong> ${err.message}. Please check your internet connection.</div>`);
-    console.error(err);
+    const reply = data.candidates?.[0]?.content?.parts?.map(p=>p.text||'').join('')||'No response received.';
+    conversationHistory.push({ role:'assistant', content:reply });
+    removeTyping(); appendMessage('ai', reply);
+  } catch(err) {
+    removeTyping(); appendMessage('ai', `<div class="danger-box">🚨 <strong>Connection error:</strong> ${err.message}</div>`);
   }
-
-  btn.disabled = false;
-  input.focus();
+  btn.disabled=false; input.focus();
 }
 
-function openDrawer() {
-  const overlay = document.getElementById('drawerOverlay');
-  const drawer = document.getElementById('drawer');
-  overlay.style.display = 'block';
-  drawer.style.display = 'block';
-  requestAnimationFrame(() => {
-    overlay.classList.add('open');
-    drawer.classList.add('open');
-  });
-  document.body.style.overflow = 'hidden';
+// ── DRUG LOOKUP ──
+function lookupDrug() {
+  const drug = document.getElementById('drugSearch').value.trim();
+  if (!drug) return;
+  stats.drugs++; saveStats();
+  goChat(`Give me complete drug information for ${drug} including: Generic Name, Brand Names, Drug Class, Mechanism of Action, Indications, Contraindications, Adult Dose, Side Effects, Serious Adverse Effects, Drug Interactions, Pregnancy Safety, Nursing Considerations, and Patient Education.`);
 }
 
-function closeDrawer() {
-  const overlay = document.getElementById('drawerOverlay');
-  const drawer = document.getElementById('drawer');
-  overlay.classList.remove('open');
-  drawer.classList.remove('open');
-  setTimeout(() => {
-    overlay.style.display = 'none';
-    drawer.style.display = 'none';
-  }, 300);
-  document.body.style.overflow = '';
+// ── CALCULATORS ──
+function showResult(id, html) {
+  const el = document.getElementById(id);
+  el.innerHTML = html; el.classList.add('show');
+  stats.calcs++; saveStats();
+}
+
+function calcBMI() {
+  const w = parseFloat(document.getElementById('bmiWeight').value);
+  const h = parseFloat(document.getElementById('bmiHeight').value) / 100;
+  if (!w||!h) return;
+  const bmi = (w/(h*h)).toFixed(1);
+  let cat = bmi<18.5?'Underweight 🟡':bmi<25?'Normal weight ✅':bmi<30?'Overweight 🟠':'Obese 🔴';
+  showResult('bmiResult', `<strong>BMI: ${bmi}</strong><br>Category: ${cat}`);
+}
+
+function calcGFR() {
+  const age = parseFloat(document.getElementById('gfrAge').value);
+  const cr = parseFloat(document.getElementById('gfrCr').value);
+  const sex = document.getElementById('gfrSex').value;
+  if (!age||!cr) return;
+  const k = sex==='female'?0.7:0.9, a = sex==='female'?-0.241:-0.302, sexFactor = sex==='female'?1.012:1;
+  const gfr = (142 * Math.pow(Math.min(cr/k,1),a) * Math.pow(Math.max(cr/k,1),-1.200) * Math.pow(0.9938,age) * sexFactor).toFixed(0);
+  let stage = gfr>=90?'G1 — Normal/High':gfr>=60?'G2 — Mildly decreased':gfr>=45?'G3a — Mild-Moderate decrease':gfr>=30?'G3b — Moderate-Severe decrease':gfr>=15?'G4 — Severely decreased':'G5 — Kidney failure';
+  showResult('gfrResult', `<strong>eGFR: ${gfr} mL/min/1.73m²</strong><br>CKD Stage: ${stage}`);
+}
+
+function calcCURB() {
+  const score = ['curb1','curb2','curb3','curb4','curb5'].filter(id=>document.getElementById(id).checked).length;
+  const risk = score<=1?'Low risk — consider home treatment':score===2?'Moderate risk — consider hospital admission':'High risk — hospital admission recommended';
+  const mort = score===0?'<1%':score===1?'~1.5%':score===2?'~9.2%':score===3?'~14.5%':score===4?'~40%':'~57%';
+  showResult('curbResult', `<strong>CURB-65 Score: ${score}/5</strong><br>${risk}<br>30-day mortality: ${mort}`);
+}
+
+function calcDrip() {
+  const vol = parseFloat(document.getElementById('dripVol').value);
+  const time = parseFloat(document.getElementById('dripTime').value);
+  const factor = parseFloat(document.getElementById('dripFactor').value);
+  if (!vol||!time) return;
+  const rate = ((vol * factor) / (time * 60)).toFixed(0);
+  const mlhr = (vol/time).toFixed(0);
+  showResult('dripResult', `<strong>${rate} gtts/min</strong><br>Flow rate: ${mlhr} mL/hr`);
+}
+
+function calcBSA() {
+  const w = parseFloat(document.getElementById('bsaWeight').value);
+  const h = parseFloat(document.getElementById('bsaHeight').value);
+  if (!w||!h) return;
+  const bsa = Math.sqrt((w*h)/3600).toFixed(2);
+  showResult('bsaResult', `<strong>BSA: ${bsa} m²</strong><br>Used for chemotherapy and burn area dosing`);
+}
+
+function calcMAP() {
+  const sys = parseFloat(document.getElementById('mapSys').value);
+  const dia = parseFloat(document.getElementById('mapDia').value);
+  if (!sys||!dia) return;
+  const map = ((dia*2+sys)/3).toFixed(0);
+  const status = map<60?'⚠️ Low — inadequate organ perfusion':map<=100?'✅ Normal (60-100 mmHg)':'⚠️ Elevated — consider hypertension management';
+  showResult('mapResult', `<strong>MAP: ${map} mmHg</strong><br>${status}`);
 }
 </script>
 </body>
